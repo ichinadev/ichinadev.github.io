@@ -1,5 +1,38 @@
 <!DOCTYPE html>
 <meta name='viewport' content='width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0'>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+	/*天真网（tzw520.cn） 鼠标特效 */
+	var a_idx = 0;
+	jQuery(document).ready(function($) {
+		$("#pickme").click(function(e) {
+			var a = new Array("升职加薪", "颜值爆表", "人中龙凤", "英明之举", "时尚达人", "你在我眼中是最美");
+			var $i = $("<span/>").text(a[a_idx]);
+			a_idx = (a_idx + 1) % a.length;
+			var x = e.pageX,
+				y = e.pageY;
+			$i.css({
+				"z-index": 999999999999999999999999999999999999999999999999999999999999999999999,
+				"top": y - 20,
+				"left": x,
+				"position": "absolute",
+				"font-weight": "bold",
+				"font-size": 40,
+				"color": "#ff6651"
+			});
+			$("body").append($i);
+			$i.animate({
+					"top": y - 550,
+					"opacity": 0
+				},
+				1800,
+				function() {
+					$i.remove();
+				});
+		});
+	});
+</script>
 <!-- three.js library -->
 <script src='../build/three.js'></script>
 <!-- <script src='vendor/three.js/examples/js/libs/stats.min.js'></script> -->
@@ -258,7 +291,7 @@ Your browser does not support the audio element.
 	<div hidden="hidden" class="AnimateDiv" id="animationD" style="margin: 0px; width: 100%; height: 100%; z-index: 9999">
 		<img class="showAnimation" src="../../data/images/yellow.gif" alt="测试图片" style="margin: 0px; width: 100%; z-index: -1">
 
-		<button type="button" onclick="getItClick()" style="margin-top: 20px; height: 100px; width: 100%; border-width: 2px; border-radius: 1px; border-color: yellow;z-index: -1">pick it!</button>
+		<button type="button" id="pickme" onclick="getItClick()" style="margin-top: 20px; height: 100px; width: 100%; border-width: 2px; border-radius: 1px; border-color: yellow;z-index: -1">PICK ME!</button>
 
 		<button type="button" onclick="scanAgain()" style="margin-top: 10px; height: 100px; width: 100%; border-width: 2px; border-radius: 1px; border-color: red;z-index: -1">scan again!</button>
 	</div>
@@ -267,4 +300,6 @@ Your browser does not support the audio element.
 	<div class="scanDiv" id="animationS" style="margin: auto; width: 90%;">
 		<img class="scanAnimatioin" src="../../data/images/gifsmall.gif" alt="scan图片" style="margin-top: 50px; width: 100%; height: 50%; z-index: 9999">
 	</div>
+
+
 </body>
