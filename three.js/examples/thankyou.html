@@ -18,11 +18,13 @@
 
 <script type="text/javascript">
 	function getItClick() {
-		var AD1 = document.getElementById("animationD");
-		AD1.setAttribute("hidden", true);
+		// var AD1 = document.getElementById("animationD");
+		// AD1.setAttribute("hidden", true);
 		console.log('clickit！！！！！！！！');
 
-
+		//暂停扫描音效
+		var scanP = document.getElementById('scanSound');
+		scanP.play();
 	};
 
 	function scanAgain() {
@@ -33,9 +35,9 @@
 		var ADscans = document.getElementById("animationS");
 		ADscans.removeAttribute("hidden");
 
-		//开启扫描音效
+		//暂停扫描音效
 		var scanP = document.getElementById('scanSound');
-		scanP.play();
+		scanP.pause();
 
 	};
 
@@ -171,9 +173,9 @@
 		smoothedControls.addEventListener('becameVisible', function() {
 			console.log('becameVisible event notified')
 
-			//暂停扫描音效
+			//开启扫描音效
 			var scanP = document.getElementById('scanSound');
-			scanP.pause();
+			scanP.play();
 
 			var AD = document.getElementById("animationD");
 			AD.removeAttribute("hidden");
@@ -247,7 +249,7 @@
 	</script>
 
 	<div>
-		<audio id="scanSound" autoplay="autoplay" src="../../data/music/5078.mp3" loop="loop">
+		<audio id="scanSound" autoplay="autoplay" src="../../data/music/yellow.m4a" loop="loop">
  <!--
     <source src="http://cctv3.qiniudn.com/zuixingfuderen.mp3" type="audio/mp3"> -->
 Your browser does not support the audio element.
